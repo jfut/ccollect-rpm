@@ -2,6 +2,8 @@
 
 [![Build Status](https://github.com/jfut/ccollect-rpm/workflows/test/badge.svg?branch=master)](https://github.com/jfut/ccollect-rpm/actions?query=workflow%3Atest)
 
+RPM Packaging for [ccollect](https://www.nico.schottelius.org/software/ccollect/).
+
 ## Usage
 
 ```
