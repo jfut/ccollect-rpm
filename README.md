@@ -44,3 +44,7 @@ git tag -a v2.6-1 -m "Release v2.6-1"
 git push origin refs/tags/v2.6-1
 ```
 
+## License
+
+MIT
+
