@@ -1,15 +1,15 @@
-#!/bin/bash
 #
-# Build RPM  with docker
+# Build RPM with docker
+#
+# @author Jun Futagawa (jfut)
 
-
-DOCKER_RPMBUILD_DIR="/pkg/rpmbuild"
 SPEC_FILE_NAME="ccollect.spec"
 
+PACKAGER="$(basename "${0}")"
 SCRIPT_DIR=$(dirname $(readlink -f $0))
 HOST_RPMBUILD_DIR="${SCRIPT_DIR}/rpmbuild"
 
-PACKAGER="$(basename "${0}")"
+DOCKER_RPMBUILD_DIR="/pkg/rpmbuild"
 
 # Usage
 usage() {
