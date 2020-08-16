@@ -1,0 +1,12 @@
+diff -urN ccollect-2.9.default/ccollect ccollect-2.9/ccollect
+--- ccollect-2.9.default/ccollect	2020-05-25 19:05:35.000000000 +0900
++++ ccollect-2.9/ccollect	2020-08-16 12:24:44.127525894 +0900
+@@ -708,7 +708,7 @@
+     #
+     # Check: source is up and accepting connections (before deleting old backups!)
+     #
+-    if ! rsync "$@" "${source}" >/dev/null 2>"${TMP}" ; then
++    if ! rsync -a --exclude "*" "$@" "${source}" >/dev/null 2>"${TMP}" ; then
+         # variable is assigned using eval
+         # shellcheck disable=SC2154
+         if [ ! -f "${c_quiet_if_down}" ]; then
