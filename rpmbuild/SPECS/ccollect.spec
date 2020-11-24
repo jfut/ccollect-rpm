@@ -1,6 +1,6 @@
 Summary:        (pseudo) incremental backup with different exclude lists using hardlinks and rsync
 Name:           ccollect
-Version:        2.9
+Version:        2.10
 Release:        1%{?dist}
 URL:            https://www.nico.schottelius.org/software/ccollect
 Source0:        https://www.nico.schottelius.org/software/ccollect/download/%{name}-%{version}.tar.bz2
@@ -64,6 +64,9 @@ rm -rf $RPM_BUILD_ROOT
 %dir %_sysconfdir/%name
 
 %changelog
+* Wed Nov 25 2020 Jun Futagawa <jfut@integ.jp> 2.10-1
+- Update to version 2.10
+
 * Sun Aug 16 2020 Jun Futagawa <jfut@integ.jp> 2.9-1
 - Update to version 2.9
 - Change the rsync option for rsync 3.x when checking the connection to the source
