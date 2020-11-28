@@ -67,7 +67,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %changelog
 * Sat Nov 28 2020 Jun Futagawa <jfut@integ.jp> 2.10-2
-- Add Improve 'current' symlink to backup destinations patch
+- Add improve 'current' symlink to backup destinations patch
 
 * Wed Nov 25 2020 Jun Futagawa <jfut@integ.jp> 2.10-1
 - Update to version 2.10
