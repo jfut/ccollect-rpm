@@ -1,10 +1,11 @@
 Summary:        (pseudo) incremental backup with different exclude lists using hardlinks and rsync
 Name:           ccollect
 Version:        2.10
-Release:        1%{?dist}
+Release:        2%{?dist}
 URL:            https://www.nico.schottelius.org/software/ccollect
 Source0:        https://www.nico.schottelius.org/software/ccollect/download/%{name}-%{version}.tar.bz2
 Patch1:         ccollect-2.9-rsync3.patch
+Patch2:         https://code.ungleich.ch/ungleich-public/ccollect/-/merge_requests/16.patch
 
 License:        GPL-3
 Group:          Applications/System
@@ -22,6 +23,7 @@ Only the inodes used by the hardlinks and the changed files need additional spac
 %setup -q
 
 %patch1 -p1
+%patch2 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -64,6 +66,9 @@ rm -rf $RPM_BUILD_ROOT
 %dir %_sysconfdir/%name
 
 %changelog
+* Sat Nov 28 2020 Jun Futagawa <jfut@integ.jp> 2.10-2
+- Add Improve 'current' symlink to backup destinations patch
+
 * Wed Nov 25 2020 Jun Futagawa <jfut@integ.jp> 2.10-1
 - Update to version 2.10
 
