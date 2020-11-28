@@ -14,10 +14,10 @@ Usage:
         -d Debug mode.
 
     Build for CentOS 8:
-        build -i centos:8
+        build centos:8
 
     Build for CentOS 7:
-        build -i centos:7
+        build centos:7
 ```
 
 ## Build RPM Packages with Docker
