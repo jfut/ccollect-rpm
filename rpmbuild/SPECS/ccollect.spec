@@ -5,7 +5,7 @@ Release:        2%{?dist}
 URL:            https://www.nico.schottelius.org/software/ccollect
 Source0:        https://www.nico.schottelius.org/software/ccollect/download/%{name}-%{version}.tar.bz2
 Patch1:         ccollect-2.9-rsync3.patch
-Patch2:         https://code.ungleich.ch/ungleich-public/ccollect/-/merge_requests/16.patch
+Patch2:         https://code.ungleich.ch/ungleich-public/ccollect/commit/2ca7598593befc52bff6b51b330bbcf508e20387.patch
 
 License:        GPL-3
 Group:          Applications/System
