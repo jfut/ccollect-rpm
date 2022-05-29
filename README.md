@@ -2,7 +2,7 @@
 
 [![Build Status](https://github.com/jfut/ccollect-rpm/workflows/test/badge.svg?branch=master)](https://github.com/jfut/ccollect-rpm/actions?query=workflow%3Atest)
 
-RPM Packaging for [ccollect](https://www.nico.schottelius.org/software/ccollect/).
+[ccollect](https://www.nico.schottelius.org/software/ccollect/) RPM Packaging for RHEL/AlmaLinux/Rocky Linux/others.
 
 ## Usage
 
@@ -13,8 +13,11 @@ Usage:
     Options:
         -d Debug mode.
 
-    Build for CentOS 8:
-        build centos:8
+    Build for RHEL/AlmaLinux/Rocky Linux 9:
+        build almalinux:9
+
+    Build for RHEL/AlmaLinux/Rocky Linux 8:
+        build almalinux:8
 
     Build for CentOS 7:
         build centos:7
