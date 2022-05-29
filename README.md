@@ -28,13 +28,13 @@ Usage:
 You can build RPM packages in Docker.
 
 ```
-./build
+./build almalinux:9
 ```
 
 - Debug shell
 
 ```
-./build -d
+./build -d almalinux:9
 /pkg/build-rpm /pkg/rpmbuild ccollect.spec
 ```
 
