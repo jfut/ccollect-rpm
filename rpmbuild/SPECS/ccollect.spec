@@ -1,7 +1,7 @@
 Summary:        (pseudo) incremental backup with different exclude lists using hardlinks and rsync
 Name:           ccollect
 Version:        2.10
-Release:        2%{?dist}
+Release:        3%{?dist}
 URL:            https://www.nico.schottelius.org/software/ccollect
 Source0:        https://www.nico.schottelius.org/software/ccollect/download/%{name}-%{version}.tar.bz2
 Patch1:         ccollect-2.9-rsync3.patch
@@ -66,6 +66,9 @@ rm -rf $RPM_BUILD_ROOT
 %dir %_sysconfdir/%name
 
 %changelog
+* Sun May 29 2022 Jun Futagawa <jfut@integ.jp> 2.10-3
+- Add support for RHEL/AlmaLinux/Rocky Linux 9 (#1)
+
 * Sat Nov 28 2020 Jun Futagawa <jfut@integ.jp> 2.10-2
 - Add improve 'current' symlink to backup destinations patch
 
