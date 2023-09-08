@@ -36,7 +36,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 1
       - name: Build RPM
@@ -45,7 +45,7 @@ jobs:
           ./build $(echo ${BUILD_IMAGE} | sed 's/-/:/')
           echo "##[set-output name=release-tag;]$(echo ${{ github.ref }} | sed -e 's|refs/tags/||g')"
       - name: Upload Assets
-        uses: AButler/upload-release-assets@v1.0
+        uses: AButler/upload-release-assets@v2.0
         with:
           files: "rpmbuild/SRPMS/*.src.rpm,rpmbuild/RPMS/noarch/*.rpm"
           repo-token: ${{ secrets.GITHUB_TOKEN }}

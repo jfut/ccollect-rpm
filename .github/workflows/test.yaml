@@ -21,7 +21,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 1
       - name: Build RPM
@@ -29,7 +29,7 @@ jobs:
         run: |
           ./build $(echo ${BUILD_IMAGE} | sed 's/-/:/')
       - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.image }}
           path: rpmbuild/**/*.rpm
