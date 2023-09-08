@@ -1,7 +1,7 @@
 Summary:        (pseudo) incremental backup with different exclude lists using hardlinks and rsync
 Name:           ccollect
 Version:        2.10
-Release:        3%{?dist}
+Release:        4%{?dist}
 URL:            https://www.nico.schottelius.org/software/ccollect
 Source0:        https://www.nico.schottelius.org/software/ccollect/download/%{name}-%{version}.tar.bz2
 Patch1:         ccollect-2.9-rsync3.patch
@@ -30,12 +30,15 @@ rm -rf $RPM_BUILD_ROOT
 
 #Installing main ccollect and /etc directory
 %__install -d 755 %buildroot%_bindir
-%__install -d 755 %buildroot%_sysconfdir/%name
 %__install -m 755 ccollect %buildroot%_bindir/
+
+%__install -d 750 %buildroot%_sysconfdir/%name
+%__install -d 750 %buildroot%_sysconfdir/%name/defaults
+%__install -d 750 %buildroot%_sysconfdir/%name/sources
 
 #bin files from tools directory
 for t in $(ls tools/ccollect_*) ; do
-	%__install -m 755 ${t} %buildroot%_bindir/ 
+	%__install -m 755 ${t} %buildroot%_bindir/
 done
 
 #Configuration examples and docs
@@ -63,9 +66,15 @@ rm -rf $RPM_BUILD_ROOT
 %_datadir/doc/%name-%version
 %_datadir/%name/tools
 %docdir %_datadir/doc/%name-%version
+%defattr(644, root, root, 750)
 %dir %_sysconfdir/%name
+%dir %_sysconfdir/%name/defaults
+%dir %_sysconfdir/%name/sources
 
 %changelog
+* Sat Sep  9 2023 Jun Futagawa <jfut@integ.jp> 2.10-4
+- Add initial configuration directory (#3)
+
 * Sun May 29 2022 Jun Futagawa <jfut@integ.jp> 2.10-3
 - Add support for RHEL/AlmaLinux/Rocky Linux 9 (#1)
 
