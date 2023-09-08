@@ -51,7 +51,7 @@ setup_dir() {
 build() {
     local BUILD_IMAGE="$1"
 
-    local BUILD_HOSTNAME="rpmbuild.$(echo ${BUILD_IMAGE} | tr -d ':').docker"
+    local BUILD_HOSTNAME="${BUILD_HOSTNAME:-${HOSTNAME}}"
 
     local DOCKER_OPTIONS=""
     local BUILD_CMD="$(dirname ${DOCKER_RPMBUILD_DIR})/build-rpm ${DOCKER_RPMBUILD_DIR} ${SPEC_FILE_NAME}"
@@ -60,6 +60,9 @@ build() {
         DOCKER_OPTIONS="-it"
         BUILD_CMD="/bin/bash"
     fi
+
+    # Update build image
+    docker pull "${BUILD_IMAGE}"
 
     # Build
     docker run \
