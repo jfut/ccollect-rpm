@@ -33,6 +33,7 @@ jobs:
 
     env:
       BUILD_IMAGE: ${{ matrix.image }}
+      BUILD_HOSTNAME: ${{ matrix.image }}.github.integ.jp
 
     steps:
       - name: Checkout
@@ -42,12 +43,12 @@ jobs:
       - name: Build RPM
         id: build_rpm
         run: |
-          ./build $(echo ${BUILD_IMAGE} | sed 's/-/:/')
+          ./build $(echo ${BUILD_IMAGE} | sed 's/_/:/g')
           echo "##[set-output name=release-tag;]$(echo ${{ github.ref }} | sed -e 's|refs/tags/||g')"
       - name: Upload Assets
         uses: AButler/upload-release-assets@v2.0
         with:
-          files: "rpmbuild/SRPMS/*.src.rpm,rpmbuild/RPMS/noarch/*.rpm"
+          files: "rpmbuild/SRPMS/*.rpm;rpmbuild/RPMS/*/*.rpm"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           release-tag: ${{ steps.build_rpm.outputs.release-tag }}
 
