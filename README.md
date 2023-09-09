@@ -43,8 +43,8 @@ You can build RPM packages in Docker.
 e.g.:
 
 ```
-git tag -a v2.10-4 -m "Release v2.10-4"
-git push origin refs/tags/v2.10-4
+git tag -a v2.10-5 -m "Release v2.10-5"
+git push origin refs/tags/v2.10-5
 ```
 
 ## License
