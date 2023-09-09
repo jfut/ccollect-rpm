@@ -1,7 +1,7 @@
 Summary:        (pseudo) incremental backup with different exclude lists using hardlinks and rsync
 Name:           ccollect
 Version:        2.10
-Release:        4%{?dist}
+Release:        5%{?dist}
 URL:            https://www.nico.schottelius.org/software/ccollect
 Source0:        https://www.nico.schottelius.org/software/ccollect/download/%{name}-%{version}.tar.bz2
 Patch1:         ccollect-2.9-rsync3.patch
@@ -34,6 +34,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %__install -d 750 %buildroot%_sysconfdir/%name
 %__install -d 750 %buildroot%_sysconfdir/%name/defaults
+%__install -d 750 %buildroot%_sysconfdir/%name/defaults/intervals
 %__install -d 750 %buildroot%_sysconfdir/%name/sources
 
 #bin files from tools directory
@@ -69,9 +70,13 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644, root, root, 750)
 %dir %_sysconfdir/%name
 %dir %_sysconfdir/%name/defaults
+%dir %_sysconfdir/%name/defaults/intervals
 %dir %_sysconfdir/%name/sources
 
 %changelog
+* Sun Sep 10 2023 Jun Futagawa <jfut@integ.jp> 2.10-5
+- Add initial intervals directory (#4)
+
 * Sat Sep  9 2023 Jun Futagawa <jfut@integ.jp> 2.10-4
 - Add initial configuration directory (#3)
 
