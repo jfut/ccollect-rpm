@@ -28,24 +28,24 @@ Usage:
 You can build RPM packages in Docker.
 
 ```
-./build almalinux:9
+./build almalinux:10
 ```
 
 - Debug shell
 
 ```
-./build -d almalinux:9
+./build -d almalinux:10
 /pkg/build-rpm /pkg/rpmbuild ccollect.spec
 ```
 
-## Release tag
+## Release
 
-e.g.:
-
-```
-git tag -a v2.10-5 -m "Release v2.10-5"
-git push origin refs/tags/v2.10-5
-```
+1. Edit the `Draft` on the release page.
+2. Update the new version `name` and `tag` on the edit page.
+3. Check `Set as a pre-release` and press the `Publish release` button.
+4. Wait for the build by GitHub Actions to finish.
+    - If the build fails due to errors such as download errors of source files, execute `Re-run failed jobs`.
+5. Once all release files are automatically uploaded, check `Set as the latest release` and press the `Publish release` button.
 
 ## License
 
