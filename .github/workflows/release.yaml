@@ -32,7 +32,6 @@ jobs:
       - name: Build RPM
         run: |
           ./build $(echo ${BUILD_IMAGE} | sed 's/_/:/g')
-          echo "##[set-output name=release-tag;]$(echo ${{ github.ref }} | sed -e 's|refs/tags/||g')"
 
       - name: Upload Assets
         uses: AButler/upload-release-assets@3d6774fae0ed91407dc5ae29d576b166536d1777 # v3.0
