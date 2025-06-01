@@ -1,8 +1,7 @@
 # RPM version don't use semantic versioning
 version-template: "$MAJOR.$MINOR-$PATCH"
-name-template: "v0.$RESOLVED_VERSION"
-tag-template: "v0.$RESOLVED_VERSION"
-tag-prefix: "v0."
+name-template: "$RESOLVED_VERSION"
+tag-template: "$RESOLVED_VERSION"
 
 categories:
   - title: '⚠️ Breaking changes'
