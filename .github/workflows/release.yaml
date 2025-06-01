@@ -39,4 +39,4 @@ jobs:
         with:
           files: "rpmbuild/SRPMS/*.rpm;rpmbuild/RPMS/*/*.rpm"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          release-tag: ${{ steps.build_rpm.outputs.release-tag }}
+          release-tag: ${{ github.ref_name }}
