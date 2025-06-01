@@ -13,6 +13,9 @@ Usage:
     Options:
         -d Debug mode.
 
+    Build for RHEL/AlmaLinux/Rocky Linux 10:
+        build almalinux:10
+
     Build for RHEL/AlmaLinux/Rocky Linux 9:
         build almalinux:9
 
@@ -47,4 +50,3 @@ git push origin refs/tags/v2.10-5
 ## License
 
 MIT
-
