@@ -27,7 +27,6 @@ jobs:
     strategy:
       matrix:
         image:
-          - centos_7
           - almalinux_8
           - almalinux_9
 

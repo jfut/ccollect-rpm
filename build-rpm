@@ -25,47 +25,28 @@ pushd "${RPMBUILD_DIR}"
 # RPM macros
 RPM_MACROS=/usr/lib/rpm/macros.d/macros.dist
 if [[ -f /etc/rpm/macros.dist ]]; then
-    # el7 and el8
+    # el8
     RPM_MACROS=/etc/rpm/macros.dist
 fi
 RPM_DIST=.$(egrep -o "^%el[0-9]*" "${RPM_MACROS}" | tr -d '%')
 echo "RPM_DIST: ${RPM_DIST} (${RPM_MACROS})"
 
 # install dependencies
-if [[ -f /usr/bin/dnf ]]; then
-    # el8 or later
+echo
+echo "Installing build tools and dependencies: ${BUILD_PACKAGES} dnf-plugins-core"
+RETRY=0
+until dnf -y install ${BUILD_PACKAGES} dnf-plugins-core || [[ "${RETRY}" -eq "${MAX_RETRY}" ]];
+do
     echo
-    echo "Installing build tools and dependencies: ${BUILD_PACKAGES} dnf-plugins-core"
-    RETRY=0
-    until dnf -y install ${BUILD_PACKAGES} dnf-plugins-core || [[ "${RETRY}" -eq "${MAX_RETRY}" ]];
-    do
-        echo
-        sleep $((RETRY++))
-        echo "Retry: dnf -y install ${BUILD_PACKAGES} (retry: ${RETRY})"
-    done
-    until dnf -y builddep "SPECS/${SPEC_FILE_NAME}" || [[ "${RETRY}" -eq "${MAX_RETRY}" ]];
-    do
-        sleep $((RETRY++))
-        echo
-        echo "Retry: dnf -y builddep \"SPECS/${SPEC_FILE_NAME}\" (retry: ${RETRY})"
-    done
-else
-    # el7
+    sleep $((RETRY++))
+    echo "Retry: dnf -y install ${BUILD_PACKAGES} (retry: ${RETRY})"
+done
+until dnf -y builddep "SPECS/${SPEC_FILE_NAME}" || [[ "${RETRY}" -eq "${MAX_RETRY}" ]];
+do
+    sleep $((RETRY++))
     echo
-    echo "Installing build tools and dependencies: ${BUILD_PACKAGES}"
-    until yum -y install ${BUILD_PACKAGES} || [[ "${RETRY}" -eq "${MAX_RETRY}" ]];
-    do
-        sleep $((RETRY++))
-        echo
-        echo "Retry: yum -y install ${BUILD_PACKAGES} (retry: ${RETRY})"
-    done
-    until yum-builddep -y "SPECS/${SPEC_FILE_NAME}" || [[ "${RETRY}" -eq "${MAX_RETRY}" ]];
-    do
-        sleep $((RETRY++))
-        echo
-        echo "Retry: yum-builddep -y \"SPECS/${SPEC_FILE_NAME}\" (retry: ${RETRY})"
-    done
-fi
+    echo "Retry: dnf -y builddep \"SPECS/${SPEC_FILE_NAME}\" (retry: ${RETRY})"
+done
 
 # build rpm
 if [[ ! -d SOURCES ]]; then
@@ -76,7 +57,7 @@ if [[ "${RPM_DIST}" = ".el9" ]]; then
     # el9 or later
     spectool -g -a "SPECS/${SPEC_FILE_NAME}" -C SOURCES/
 else
-    # el7 or el8
+    # el8
     spectool -g -A "SPECS/${SPEC_FILE_NAME}" -C SOURCES/
 fi
 

@@ -18,9 +18,6 @@ Usage:
 
     Build for RHEL/AlmaLinux/Rocky Linux 8:
         build almalinux:8
-
-    Build for CentOS 7:
-        build centos:7
 ```
 
 ## Build RPM Packages with Docker
